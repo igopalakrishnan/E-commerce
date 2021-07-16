@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const env = require('dotenv');
-const bodyParser = require('body-parser');
+
 
 const app = express();
 
@@ -26,7 +26,7 @@ mongoose.connect(
     })
 
 //add middleware before the request
-app.use(bodyParser());
+app.use(express.json());
 app.use('/api', authRoutes);
 app.use('/api', adminRoutes);
 
