@@ -40,7 +40,7 @@ exports.addCategory = (req, res) => {
 
         if(error) return res.status(400).json(( error ));
         if(category) {
-            return res.status(201).json({ category });
+             res.status(201).json({ category });
         }
     })
 

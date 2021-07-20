@@ -10,6 +10,7 @@ const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin/auth');
 const categoryRoutes = require('./routes/category');
 const productRoutes = require('./routes/product');
+const cartRoutes = require('./routes/cart');
 
 
 //environmental variable
@@ -21,7 +22,8 @@ mongoose.connect(
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex: true
+        useCreateIndex: true,
+        useFindAndModify: false
     }
     ).then(() => {
         console.log('mongoDB connected......');
@@ -33,6 +35,7 @@ app.use('/api', authRoutes);
 app.use('/api', adminRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', productRoutes);
+app.use('/api', cartRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log(`This server is running on ${process.env.PORT}`);
