@@ -9,14 +9,17 @@ const initialState = {
         picture: ''
     },
     authenticate: false,
-    authenticating: false
+    authenticating: false,
+    loading: false,
+    message: '',
+    error: null
 };
 
 export default (state = initialState, action) => {
 
     console.log(action);
-    
-    switch(action.type) {
+
+    switch (action.type) {
         case authConstants.LOGIN_REQUEST:
             state = {
                 ...state,
@@ -30,11 +33,29 @@ export default (state = initialState, action) => {
                 token: action.payload.token,
                 authenticate: true,
                 authenticating: false
-            }    
+            }
+            break;
+        case authConstants.LOGOUT_REQUEST:
+            state = {
+                ...state,
+                loading: true
+            }
+            break;
+        case authConstants.LOGOUT_SUCCESS:
+            state = {
+                ...initialState
+            }
+            break;
+        case authConstants.LOGOUT_FAILURE:
+            state = {
+                ...state,
+                error: action.payload.error,
+                loading: false
+            }
             break;
     }
 
     return state;
-    
-    
+
+
 }
