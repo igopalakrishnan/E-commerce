@@ -5,6 +5,8 @@ import Input from '../../components/UI/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../../actions';
 import Modal from '../../components/UI/Modal';
+import './style.css';
+import { generatePublicUrl } from '../../urlConfig';
 
 /**
 * @author
@@ -42,6 +44,12 @@ const Products = (props) => {
     }
 
     dispatch(addProduct(form));
+    setName('');
+    setQuantity('');
+    setPrice('');
+    setDescription('');
+    setCategoryId('');
+    setProductPicture('');
 
     setShow(false);
   }
@@ -71,7 +79,7 @@ const Products = (props) => {
 
   const renderProducts = () => {
     return (
-      <Table style={{ fontSize: 12}} responsive="sm">
+      <Table style={{ fontSize: 12 }} responsive="sm">
         <thead>
           <tr>
             <th>#</th>
@@ -93,7 +101,7 @@ const Products = (props) => {
                   <td>{product.price}</td>
                   <td>{product.quantity}</td>
                   {/*  <td>{product.description}</td> */}
-                  <td>----</td>
+                  <td>{product.category.name}</td>
                 </tr>
               ) : null
           }
@@ -157,19 +165,19 @@ const Products = (props) => {
     );
   }
 
-  const handleCloseProductDetailsModal = () => {
-    setProductDetailModal(false);
-  }
-
   const showProductDetailsModal = (product) => {
     setProductDetails(product);
     setProductDetailModal(true);
   }
 
+  const handleCloseProductDetailsModal = () => {
+    setProductDetailModal(false);
+  }
+
 
   const renderProductDetailsModal = () => {
 
-    if(!productDetails) {
+    if (!productDetails) {
       return null;
     }
     return (
@@ -182,8 +190,41 @@ const Products = (props) => {
 
         <Row>
           <Col md="6">
-            <label>Name</label>
-            <p>{productDetails.name}</p>
+            <label className="key">Name</label>
+            <p className="value">{productDetails.name}</p>
+          </Col>
+          <Col md="6">
+            <label className="key">Price</label>
+            <p className="value">{productDetails.price}</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col md="6">
+            <label className="key">Quantity</label>
+            <p className="value">{productDetails.quantity}</p>
+          </Col>
+          <Col md="6">
+            <label className="key">Category</label>
+            <p className="value">{productDetails.category.name}</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col md="12">
+            <label className="key">Description</label>
+            <p className="value">{productDetails.description}</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <label className="key">Product Pictures</label>
+            <div style={{ display: 'flex' }}>
+            {productDetails.productPictures.map(picture =>
+              <div className="productImgContainer">
+                <img src={generatePublicUrl(picture.img)} />
+              </div>
+            )}
+            </div>
+            
           </Col>
         </Row>
 
