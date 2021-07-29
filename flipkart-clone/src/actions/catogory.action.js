@@ -7,7 +7,7 @@ export const getAllCategory = () => {
         dispatch({ type: categoryConstants.GET_ALL_CATEGORY_REQUEST });
 
         const res = await axios.get('category/getcategory');
-        console.log(res);
+        //console.log(res);
 
         if (res.status === 200) {
 
