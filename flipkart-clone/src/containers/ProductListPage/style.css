@@ -12,6 +12,7 @@
 }
 .productContainer{
     width: 200px;
+    margin: 0 10px;
 }
 .productContainer .productImgContainer{
     width: 150px;
