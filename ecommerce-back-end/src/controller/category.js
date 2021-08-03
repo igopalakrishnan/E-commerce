@@ -79,14 +79,16 @@ exports.updateCategories = async (req, res) => {
                 name: name[i],
                 type: type[i]
             };
-            if (parentId !== "") {
+            if (parentId[i] !== "") {
                 category.parentId = parentId[i];
             }
 
-            const updatedCategory = await Category.findOneAndUpdate({ _id }, category, { new: true });
+            const updatedCategory = await Category.findOneAndUpdate({ _id: _id[i] }, category, { new: true });
             updatedCategories.push(updatedCategory);
-            return res.status(201).json({ updatedCategories });
+            
         }
+        return res.status(201).json({ updateCategories: updatedCategories });
+
     } else {
         const category = {
             name,

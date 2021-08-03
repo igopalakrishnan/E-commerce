@@ -48,11 +48,11 @@ export const addCategory = (form) => {
     }
 }
 
-export const updateCategory = (form) => {
+export const updateCategories = (form) => {
     return async dispatch => {
         const res = await axios.post(`/category/update`, form);
         
-
+        return true;
         if (res.status === 201) {
             console.log(res);
         }else{

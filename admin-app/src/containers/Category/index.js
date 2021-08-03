@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllCategory, addCategory } from '../../actions';
+import { getAllCategory, addCategory, updateCategories } from '../../actions';
 import Input from '../../components/UI/Input';
 import Modal from '../../components/UI/Modal';
 import CheckboxTree from 'react-checkbox-tree';
@@ -130,6 +130,29 @@ const Category = (props) => {
 
 
     const updateCategoriesForm = () => {
+
+        const form = new FormData();
+
+        expandedArray.forEach((item, index) => {
+            form.append('_id', item.value);
+            form.append('name', item.name);
+            form.append('parentId', item.parentId ? item.parentId : "");
+            form.append('type', item.type);
+        });
+        checkedArray.forEach((item, index) => {
+            form.append('_id', item.value);
+            form.append('name', item.name);
+            form.append('parentId', item.parentId ? item.parentId : "");
+            form.append('type', item.type);
+        });
+        dispatch(updateCategories(form))
+        .then(result => {
+            if(result) {
+                dispatch(getAllCategory())
+            }
+        })
+
+
         setUpdateCategoryModal(false);
     }
 
