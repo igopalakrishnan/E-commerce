@@ -10,7 +10,7 @@ const buildNewCategories = (parentId, categories, category) => {
 
     let myCategories = [];
 
-    if(parentId == undefined) {
+    if(parentId === undefined) {
         return [
             ...categories,
             {
