@@ -8,12 +8,12 @@ export const getInitialData = () => {
         if(res.status === 200) {
             const { categories, products } = res.data;
             dispatch({
-                type: categoryConstants.GET_ALL_CATEGORY_SUCCESS,
+                type: categoryConstants.GET_ALL_CATEGORIES_SUCCESS,
                 payload: {categories}
             });
             dispatch({
-                type: productConstants.GET_ALL_PRODUCT_SUCCESS,
-                payload:{ products}
+                type: productConstants.GET_ALL_PRODUCTS_SUCCESS,
+                payload:{ products }
             });
         }
     }

@@ -100,13 +100,10 @@ const Products = (props) => {
                   <td>{product.name}</td>
                   <td>{product.price}</td>
                   <td>{product.quantity}</td>
-                  {/*  <td>{product.description}</td> */}
                   <td>{product.category.name}</td>
                 </tr>
               ) : null
           }
-
-
         </tbody>
       </Table>
     );
@@ -239,16 +236,14 @@ const Products = (props) => {
         <Row>
           <Col md={12}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <h3>Product</h3>
+              <h3>Products</h3>
               <button onClick={handleShow}>Add</button>
             </div>
           </Col>
         </Row>
 
         <Row>
-          <Col>
-            {renderProducts()}
-          </Col>
+          <Col>{renderProducts()}</Col>
         </Row>
       </Container>
       {renderAddProductModal()}
