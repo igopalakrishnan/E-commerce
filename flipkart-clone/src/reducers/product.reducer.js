@@ -13,7 +13,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch(action.type) {
-        case productConstants.GET_PRODUCT_BY_SLUG:
+        case productConstants.GET_PRODUCTS_BY_SLUG:
             state = {
                 ...state,
                 products: action.payload.products,

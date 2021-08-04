@@ -6,7 +6,7 @@ export const getProductsBySlug = (slug) => {
         const res = await axios.get(`/products/${slug}`);
         if(res.status === 200) {
             dispatch({
-                type: productConstants.GET_PRODUCT_BY_SLUG,
+                type: productConstants.GET_PRODUCTS_BY_SLUG,
                 payload: res.data
             });
         }
