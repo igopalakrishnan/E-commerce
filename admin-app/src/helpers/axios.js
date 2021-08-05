@@ -13,6 +13,8 @@ const axiosIntance = axios.create({
     }
 });
 
+/* JWT expires to go signin page */
+
 /* axiosIntance.interceptors.request.use((req) => {
     const { auth } = store.getState();
     if(auth.token) {

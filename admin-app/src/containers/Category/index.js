@@ -15,12 +15,16 @@ import {
     IoIosCheckboxOutline,
     IoIosCheckbox,
     IoIosArrowForward,
-    IoIosArrowDown
+    IoIosArrowDown,
+    IoIosTrash,
+    IoIosAdd,
+    IoIosCloudUpload
 } from 'react-icons/io';
 
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 import UpdateCategoriesModal from './components/UpdateCategoriesModal';
 import AddCategoryModal from './components/AddCategoryModal';
+import './style.css';
 
 /**
 * @author
@@ -53,13 +57,6 @@ const Category = (props) => {
         dispatch(addCategory(form));
         setCategoryName('');
         setParentCategoryId('');
-        /* const cat = {
-            categoryName,
-            categoryImage,
-            parentCategoryId
-        }; */
-
-        //console.log(cat);
         setShow(false);
     }
 
@@ -86,7 +83,12 @@ const Category = (props) => {
 
     const createCategoryList = (categories, options = []) => {
         for (let category of categories) {
-            options.push({ value: category._id, name: category.name, parentId: category.parentId })
+            options.push({ 
+                value: category._id, 
+                name: category.name, 
+                parentId: category.parentId,
+                type: category.type
+             })
             if (category.children.length > 0) {
                 createCategoryList(category.children, options)
             }
@@ -150,12 +152,7 @@ const Category = (props) => {
             form.append('parentId', item.parentId ? item.parentId : "");
             form.append('type', item.type);
         });
-        dispatch(updateCategories(form))
-            .then(result => {
-                if (result) {
-                    dispatch(getAllCategory())
-                }
-            })
+        dispatch(updateCategories(form));
         setUpdateCategoryModal(false);
     }
 
@@ -175,9 +172,10 @@ const Category = (props) => {
                 .then(result => {
                     if (result) {
                         dispatch(getAllCategory());
-                        setDeleteCategoryModal(false);
+                        //setDeleteCategoryModal(false);
                     }
                 })
+            setDeleteCategoryModal(false);
         }
 
     }
@@ -225,7 +223,14 @@ const Category = (props) => {
                     <Col md={12}>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <h3>Category</h3>
-                            <button onClick={handleShow}>Add</button>
+                            <div className='actionBtnContainer'>
+                                <span>Actions: </span>
+                                <button onClick={handleShow}>< IoIosAdd />Add</button>
+                                <button onClick={deleteCategory}><IoIosTrash /><span>Delete</span></button>
+                                <button onClick={updateCategory}><IoIosCloudUpload /><span>Edit</span></button>
+
+                            </div>
+
                         </div>
                     </Col>
                 </Row>
@@ -249,12 +254,6 @@ const Category = (props) => {
                                 expandOpen: <IoIosArrowDown />
                             }}
                         />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <button onClick={deleteCategory}>Delete</button>
-                        <button onClick={updateCategory}>Edit</button>
                     </Col>
                 </Row>
             </Container>
