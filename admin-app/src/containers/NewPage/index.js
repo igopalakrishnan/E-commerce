@@ -34,6 +34,14 @@ const NewPage = (props) => {
 
     useEffect(() => {
         console.log(page);
+        if (!page.loading) {
+            setCreateModal(false);
+            setTitle('');
+            setCategoryId('');
+            setDesc('');
+            setBanners([]);
+            setProducts([]);
+        }
     }, [page]);
 
     const onCategoryChange = (e) => {
@@ -83,7 +91,8 @@ const NewPage = (props) => {
             <Modal
                 show={createModal}
                 modalTitle={'Create New Page'}
-                handleClose={submitPageForm}
+                handleClose={() => setCreateModal(false)}
+                onSubmit={submitPageForm}
             >
 
                 <Container>
@@ -174,8 +183,16 @@ const NewPage = (props) => {
     }
     return (
         <Layout sidebar>
-            {renderCreatePageModal()}
-            <button onClick={() => setCreateModal(true)}>Create Page</button>
+            {
+                page.loading ?
+                    <p>Page Loading... Please Wait</p>
+                    :
+                    <>
+                        {renderCreatePageModal()}
+                        <button onClick={() => setCreateModal(true)}>Create Page</button>
+                    </>
+            }
+
         </Layout>
     )
 
