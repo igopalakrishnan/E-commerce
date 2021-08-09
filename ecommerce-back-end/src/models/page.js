@@ -30,7 +30,8 @@ const pageSchema = new mongoose.Schema({
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
+        unique: true
     }
 
 }, { timestamps: true });
