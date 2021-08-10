@@ -6,7 +6,7 @@ import './style.css';
 
 /**
 * @author
-* @function ProductPage
+* @function ProductStore
 **/
 
 const ProductStore = (props) => {
