@@ -1,30 +1,8 @@
-//import axios from "../helpers/axios";
+import axios from "../helpers/axios";
 import { cartConstants } from "./constants";
 import store from "../store";
 
-
-export const addToCart = (product) => {
-    return async dispatch => {
-        const { cartItems } = store.getState().cart;
-        //console.log('action::products', products);
-        //const product = action.payload.product;
-        //const products = state.products;
-        const qty = cartItems[product._id]
-            ? parseInt(cartItems[product._id].qty + 1)
-            : 1;
-        cartItems[product._id] = {
-            ...product,
-            qty
-        };
-        localStorage.setItem("cart", JSON.stringify(cartItems));
-        dispatch({
-            type: cartConstants.ADD_TO_CART,
-            payload: { cartItems }
-          });
-    }
-}
-
-/* const getCartItems = () => {
+const getCartItems = () => {
   return async (dispatch) => {
     try {
       dispatch({ type: cartConstants.ADD_TO_CART_REQUEST });
@@ -35,7 +13,7 @@ export const addToCart = (product) => {
         if (cartItems) {
           dispatch({
             type: cartConstants.ADD_TO_CART_SUCCESS,
-            payload: { cartItems },
+            payload: { cartItems }
           });
         }
       }
@@ -97,7 +75,7 @@ export const addToCart = (product, newQty = 1) => {
   };
 };
 
-export const removeCartItem = (payload) => {
+/* export const removeCartItem = (payload) => {
   return async (dispatch) => {
     try {
       dispatch({ type: cartConstants.REMOVE_CART_ITEM_REQUEST });
@@ -116,7 +94,7 @@ export const removeCartItem = (payload) => {
       console.log(error);
     }
   };
-};
+}; */
 
 export const updateCart = () => {
   return async (dispatch) => {
@@ -157,21 +135,6 @@ export const updateCart = () => {
       }
     }
   };
-}; */
+};
 
-
-export const updateCart = () => {
-    return async dispatch => {
-        const cartItems = localStorage.getItem('cart') ?
-        JSON.parse(localStorage.getItem('cart')) : null
-
-        if(cartItems) {
-            dispatch({
-                type: cartConstants.ADD_TO_CART,
-                payload: { cartItems }
-            })
-        }
-    }
-}
-
-//export { getCartItems };
+export { getCartItems };

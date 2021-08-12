@@ -12,7 +12,7 @@ const CartItem = (props) => {
 
   const { _id, name, price, img } = props.cartItem;
 
-  /* const onQuantityIncrement = () => {
+  const onQuantityIncrement = () => {
     setQty(qty + 1);
     props.onQuantityInc(_id, qty + 1);
   };
@@ -22,7 +22,7 @@ const CartItem = (props) => {
     setQty(qty - 1);
     props.onQuantityDec(_id, qty - 1);
   };
- */
+
   return (
     <div className="cartItemContainer">
       <div className="flexRow">
@@ -45,9 +45,9 @@ const CartItem = (props) => {
       >
         {/* quantity control */}
         <div className="quantityControl">
-          <button /* onClick={onQuantityDecrement} */>-</button>
+          <button onClick={onQuantityDecrement}>-</button>
           <input value={qty} readOnly />
-          <button /* onClick={onQuantityIncrement} */>+</button>
+          <button onClick={onQuantityIncrement}>+</button>
         </div>
         <button className="cartActionBtn">save for later</button>
         <button
