@@ -108,7 +108,7 @@ const Header = (props) => {
             </div>
             <div className="rightspace">
 
-
+              <div className='loginInputContainer' >
               <MaterialInput
                 type="text"
                 label="Enter Email/Enter Mobile Number"
@@ -121,7 +121,7 @@ const Header = (props) => {
                 label="Enter Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                rightElement={<a href="#">Forgot?</a>}
+                //rightElement={<a href="#">Forgot?</a>}
               />
               <MaterialButton
                 title="Login"
@@ -133,7 +133,7 @@ const Header = (props) => {
                 onClick={userLogin}
               />
 
-              <p>OR</p>
+              <p style={{ textAlign: 'center'}}>OR</p>
 
               <MaterialButton
                 title="Request OTP"
@@ -143,6 +143,7 @@ const Header = (props) => {
                   margin: '20px 0'
                 }}
               />
+              </div>
 
             </div>
           </div>

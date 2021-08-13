@@ -88,7 +88,7 @@ const CartPage = (props) => {
             />
           )}
 
-          {/* <div
+          <div
             style={{
               width: "100%",
               display: "flex",
@@ -105,12 +105,12 @@ const CartPage = (props) => {
                 onClick={() => props.history.push(`/checkout`)}
               />
             </div>
-          </div> */}
+          </div>
         </Card>
         <Card
           headerLeft='Price'
           style={{
-            width: '500px'
+            width: '383px'
           }}
         >
 
