@@ -1,6 +1,6 @@
 import { cartConstants } from "../actions/constants";
 
-const initState = {
+const initialState = {
     cartItems: {
         // 123: {
         //     _id: 123,
@@ -14,7 +14,7 @@ const initState = {
     error: null
 };
 
-export default (state = initState, action) => {
+export default (state = initialState, action) => {
     switch (action.type) {
         case cartConstants.ADD_TO_CART_REQUEST:
             state = {
@@ -38,7 +38,7 @@ export default (state = initState, action) => {
             break;
         case cartConstants.RESET_CART:
             state = {
-                ...initState
+                ...initialState
             }
 
     }

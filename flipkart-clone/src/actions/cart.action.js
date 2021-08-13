@@ -123,9 +123,8 @@ export const updateCart = () => {
             dispatch(getCartItems());
           }
         }
-      } else {
-        dispatch(getCartItems());
-      }
+      } 
+      
     } else {
       if (cartItems) {
         dispatch({
