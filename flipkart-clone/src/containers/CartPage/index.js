@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/Layout";
 import Card from "../../components/UI/Card";
-import { generatePublicUrl } from "../../urlConfig";
 import CartItem from "./CartItem";
 import { addToCart, getCartItems, removeCartItem } from "../../actions";
 //import PriceDetails from "../../components/PriceDetails";
@@ -55,7 +54,7 @@ const CartPage = (props) => {
     dispatch(removeCartItem({ productId: _id }));
   }; */
 
-  /* if (props.onlyCartItems) {
+  if (props.onlyCartItems) {
     return (
       <>
         {Object.keys(cartItems).map((key, index) => (
@@ -69,7 +68,7 @@ const CartPage = (props) => {
       </>
     );
   }
- */
+
   return (
     <Layout>
       <div className="cartContainer" style={{ alignItems: "flex-start" }}>
@@ -78,7 +77,7 @@ const CartPage = (props) => {
           headerRight={<div>Deliver to</div>}
           style={{ width: "calc(100% - 400px)", overflow: "hidden" }}
         >
-          {Object.keys(cartItems).map((key, index) =>
+          {Object.keys(cartItems).map((key, index) => (
             <CartItem
               key={index}
               cartItem={cartItems[key]}
@@ -86,7 +85,7 @@ const CartPage = (props) => {
               onQuantityDec={onQuantityDecrement}
             //onRemoveCartItem={onRemoveCartItem}
             />
-          )}
+          ))}
 
           <div
             style={{
@@ -115,7 +114,7 @@ const CartPage = (props) => {
         >
 
         </Card>
-        {/*  <PriceDetails
+        {/* <PriceDetails
           totalItem={Object.keys(cart.cartItems).reduce(function (qty, key) {
             return qty + cart.cartItems[key].qty;
           }, 0)}
