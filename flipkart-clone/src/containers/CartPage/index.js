@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 import Card from "../../components/UI/Card";
 import CartItem from "./CartItem";
 import { addToCart, getCartItems, removeCartItem } from "../../actions";
-//import PriceDetails from "../../components/PriceDetails";
+import PriceDetails from "../../components/PriceDetails";
 
 import "./style.css";
 import { MaterialButton } from "../../components/MaterialUI";
@@ -23,7 +23,7 @@ if logged in then add products to users cart database from localStorage
 */
 
 const CartPage = (props) => {
-  const cart = useSelector((state) => state.cart);
+ const cart = useSelector((state) => state.cart);
   const auth = useSelector((state) => state.auth);
   // const cartItems = cart.cartItems;
   const [cartItems, setCartItems] = useState(cart.cartItems);
@@ -106,15 +106,8 @@ const CartPage = (props) => {
             </div>
           </div>
         </Card>
-        <Card
-          headerLeft='Price'
-          style={{
-            width: '383px'
-          }}
-        >
 
-        </Card>
-        {/* <PriceDetails
+        <PriceDetails
           totalItem={Object.keys(cart.cartItems).reduce(function (qty, key) {
             return qty + cart.cartItems[key].qty;
           }, 0)}
@@ -122,7 +115,7 @@ const CartPage = (props) => {
             const { price, qty } = cart.cartItems[key];
             return totalPrice + price * qty;
           }, 0)}
-        /> */}
+        />
       </div>
     </Layout>
   );
