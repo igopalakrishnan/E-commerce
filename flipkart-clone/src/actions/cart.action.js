@@ -8,7 +8,7 @@ const getCartItems = () => {
       dispatch({ type: cartConstants.ADD_TO_CART_REQUEST });
       const res = await axios.post(`/user/getCartItems`);
       console.log(res);
-      /* if (res.status === 200) {
+      if (res.status === 200) {
         const { cartItems } = res.data;
         console.log({ getCartItems: cartItems });
         if (cartItems) {
@@ -17,12 +17,6 @@ const getCartItems = () => {
             payload: { cartItems }
           });
         }
-      } */
-      if(res.status === 200) {
-        const { cartItems }  = res.data;
-        dispatch({ type:cartConstants.ADD_TO_CART_SUCCESS,
-        payload: cartItems
-      })
       }
     } catch (error) {
       console.log(error);
@@ -130,8 +124,9 @@ export const updateCart = () => {
             dispatch(getCartItems());
           }
         }
-      } 
-      
+      } else {
+        dispatch(getCartItems());
+      }
     } else {
       if (cartItems) {
         dispatch({

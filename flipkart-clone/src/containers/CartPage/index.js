@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/Layout";
@@ -23,7 +24,7 @@ if logged in then add products to users cart database from localStorage
 */
 
 const CartPage = (props) => {
- const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart);
   const auth = useSelector((state) => state.auth);
   // const cartItems = cart.cartItems;
   const [cartItems, setCartItems] = useState(cart.cartItems);
@@ -83,7 +84,7 @@ const CartPage = (props) => {
               cartItem={cartItems[key]}
               onQuantityInc={onQuantityIncrement}
               onQuantityDec={onQuantityDecrement}
-            //onRemoveCartItem={onRemoveCartItem}
+              //onRemoveCartItem={onRemoveCartItem}
             />
           ))}
 
@@ -106,7 +107,6 @@ const CartPage = (props) => {
             </div>
           </div>
         </Card>
-
         <PriceDetails
           totalItem={Object.keys(cart.cartItems).reduce(function (qty, key) {
             return qty + cart.cartItems[key].qty;

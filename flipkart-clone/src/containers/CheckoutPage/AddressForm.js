@@ -9,37 +9,37 @@ import { MaterialButton, MaterialInput } from "../../components/MaterialUI";
  **/
 
 const AddressForm = (props) => {
-  //const { initialData } = props;
-  const [name, setName] = useState(/* initialData ? initialData.name :  */"");
+  const { initialData } = props;
+  const [name, setName] = useState(initialData ? initialData.name : "");
   const [mobileNumber, setMobileNumber] = useState(
-    /* initialData ? initialData.mobileNumber : */ ""
+    initialData ? initialData.mobileNumber : ""
   );
   const [pinCode, setPinCode] = useState(
-    /* initialData ? initialData.pinCode : */ ""
+    initialData ? initialData.pinCode : ""
   );
   const [locality, setLocality] = useState(
-    /* initialData ? initialData.locality : */ ""
+    initialData ? initialData.locality : ""
   );
   const [address, setAddress] = useState(
-    /* initialData ? initialData.address : */ ""
+    initialData ? initialData.address : ""
   );
   const [cityDistrictTown, setCityDistrictTown] = useState(
-    /* initialData ? initialData.cityDistrictTown : */ ""
+    initialData ? initialData.cityDistrictTown : ""
   );
-  const [state, setState] = useState(/* initialData ? initialData.state : */ "");
+  const [state, setState] = useState(initialData ? initialData.state : "");
   const [landmark, setLandmark] = useState(
-    /* initialData ? initialData.landmark : */ ""
+    initialData ? initialData.landmark : ""
   );
   const [alternatePhone, setAlternatePhone] = useState(
-    /* initialData ? initialData.alternatePhone : */ ""
+    initialData ? initialData.alternatePhone : ""
   );
   const [addressType, setAddressType] = useState(
-    /* initialData ? initialData.addressType : */ ""
+    initialData ? initialData.addressType : ""
   );
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [submitFlag, setSubmitFlag] = useState(false);
-  //const [id, setId] = useState(initialData ? initialData._id : "");
+  const [id, setId] = useState(initialData ? initialData._id : "");
 
   const inputContainer = {
     width: "100%",
@@ -62,40 +62,38 @@ const AddressForm = (props) => {
       },
     };
     console.log(payload);
-    /* if (id) {
+    if (id) {
       payload.address._id = id;
-    } */
+    }
     dispatch(addAddress(payload));
     setSubmitFlag(true);
   };
 
   useEffect(() => {
-     console.log("addressCount", user.address);
-     if (submitFlag) {
-       console.log("where are we", user);
-       const address = user.address.slice(user.address.length - 1)[0];
-       /* let _address = {};
-       if (id) {
-         _address = {
-           _id: id,
-           name,
-           mobileNumber,
-           pinCode,
-           locality,
-           address,
-           cityDistrictTown,
-           state,
-           landmark,
-           alternatePhone,
-           addressType,
-         };
-       } else {
-         _address = user.address.slice(user.address.length - 1)[0];
-       } */
-       props.onSubmitForm(address);
-       //props.onSubmitForm(_address);
-     }
-   }, [user.address]);
+    console.log("addressCount", user.address);
+    if (submitFlag) {
+      console.log("where are we", user);
+      let _address = {};
+      if (id) {
+        _address = {
+          _id: id,
+          name,
+          mobileNumber,
+          pinCode,
+          locality,
+          address,
+          cityDistrictTown,
+          state,
+          landmark,
+          alternatePhone,
+          addressType,
+        };
+      } else {
+        _address = user.address.slice(user.address.length - 1)[0];
+      }
+      props.onSubmitForm(_address);
+    }
+  }, [user.address]);
 
   const renderAddressForm = () => {
     return (

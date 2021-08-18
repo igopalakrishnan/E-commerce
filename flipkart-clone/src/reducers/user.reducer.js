@@ -32,7 +32,7 @@ export default (state = initState, action) => {
         error: action.payload.error,
       };
       break;
-    /* case userConstants.ADD_USER_ADDRESS_REQUEST:
+    case userConstants.ADD_USER_ADDRESS_REQUEST:
       state = {
         ...state,
         loading: true,
@@ -52,7 +52,7 @@ export default (state = initState, action) => {
         error: action.payload.error,
       };
       break;
-    case userConstants.GET_USER_ORDER_REQUEST:
+    /*case userConstants.GET_USER_ORDER_REQUEST:
       state = {
         ...state,
         orderFetching: true,
