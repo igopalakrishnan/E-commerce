@@ -167,7 +167,7 @@ const CheckoutPage = (props) => {
     };
 
     console.log(payload);
-    //dispatch(addOrder(payload));
+    dispatch(addOrder(payload));
     setConfirmOrder(true);
   };
 

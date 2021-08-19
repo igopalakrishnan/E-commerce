@@ -2,11 +2,11 @@ import { userConstants } from "../actions/constants";
 
 const initState = {
   address: [],
-  //orders: [],
+  orders: [],
   //orderDetails: {},
   error: null,
   loading: false,
-  //orderFetching: false,
+  orderFetching: false,
   //placedOrderId: null,
 };
 
@@ -52,7 +52,7 @@ export default (state = initState, action) => {
         error: action.payload.error,
       };
       break;
-    /*case userConstants.GET_USER_ORDER_REQUEST:
+    case userConstants.GET_USER_ORDER_REQUEST:
       state = {
         ...state,
         orderFetching: true,
@@ -72,7 +72,7 @@ export default (state = initState, action) => {
         orderFetching: false,
       };
       break;
-    case userConstants.GET_USER_ORDER_DETAILS_REQUEST:
+    /*case userConstants.GET_USER_ORDER_DETAILS_REQUEST:
       break;
     case userConstants.GET_USER_ORDER_DETAILS_SUCCESS:
       state = {

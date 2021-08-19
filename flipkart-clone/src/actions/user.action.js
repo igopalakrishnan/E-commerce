@@ -54,21 +54,21 @@ export const addAddress = (payload) => {
   };
 };
 
-/* export const addOrder = (payload) => {
+export const addOrder = (payload) => {
   return async (dispatch) => {
     try {
       const res = await axios.post(`/addOrder`, payload);
       dispatch({ type: userConstants.ADD_USER_ORDER_REQUEST });
       if (res.status === 201) {
         console.log(res);
-        const { order } = res.data;
+        //const { order } = res.data;
         dispatch({
           type: cartConstants.RESET_CART,
         });
-        dispatch({
+        /* dispatch({
           type: userConstants.ADD_USER_ORDER_SUCCESS,
           payload: { order },
-        });
+        }); */
         // const {
         //   address: { address },
         // } = res.data;
@@ -96,11 +96,11 @@ export const getOrders = () => {
       dispatch({ type: userConstants.GET_USER_ORDER_REQUEST });
       if (res.status === 200) {
         console.log(res);
-        const { orders } = res.data;
+        /* const { orders } = res.data;
         dispatch({
           type: userConstants.GET_USER_ORDER_SUCCESS,
           payload: { orders },
-        });
+        }); */
       } else {
         const { error } = res.data;
         dispatch({
@@ -115,7 +115,7 @@ export const getOrders = () => {
 };
 
 // single order with complete info and delivery location
-export const getOrder = (payload) => {
+/* export const getOrder = (payload) => {
   return async (dispatch) => {
     try {
       const res = await axios.post(`/getOrder`, payload);
