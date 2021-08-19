@@ -1,21 +1,21 @@
 import { cartConstants } from "../actions/constants";
 
-const initState = {
+const initialState = {
     cartItems: {
-        // 123: {
-        //     _id: 123,
-        //     name: 'Samsung mobile',
-        //     img: 'some.jpg',
-        //     price: 200,
-        //     qty: 1,
-        // }
+         /* 123: {
+             _id: 123,
+             name: 'Samsung mobile',
+             img: 'some.jpg',
+             price: 200,
+             qty: 1,
+         } */
     },
     updatingCart: false,
     error: null
 };
 
-export default (state = initState, action) => {
-    switch(action.type){
+export default (state = initialState, action) => {
+    switch (action.type) {
         case cartConstants.ADD_TO_CART_REQUEST:
             state = {
                 ...state,
@@ -26,7 +26,7 @@ export default (state = initState, action) => {
             state = {
                 ...state,
                 cartItems: action.payload.cartItems,
-                updatingCart: true
+                updatingCart: false
             }
             break;
         case cartConstants.ADD_TO_CART_FAILURE:
@@ -38,8 +38,9 @@ export default (state = initState, action) => {
             break;
         case cartConstants.RESET_CART:
             state = {
-                ...initState
+                ...initialState
             }
+
     }
     return state;
 }

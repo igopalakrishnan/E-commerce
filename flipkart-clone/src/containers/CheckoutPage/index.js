@@ -268,9 +268,9 @@ const CheckoutPage = (props) => {
             title={"ORDER SUMMARY"}
             active={orderSummary}
             body={
-              orderSummary ? <CartPage onlyCartItems={true}/> : null
+              orderSummary ? <CartPage onlyCartItems={true} /> : null
             }
-            
+
           /* body={
               orderSummary ? (
                   <CartPage onlyCartItems={true} />
@@ -281,42 +281,35 @@ const CheckoutPage = (props) => {
               ) : null
           } */
           />
-          <Card>
-            <div>
-              <p>Order confirmation email will be sent to{auth.user.email}</p>
-              <MaterialButton
-              title='CONTINUE'
-              />
-            </div>
-          </Card>
 
-          {/* {orderSummary && (
-                        <Card
-                            style={{
-                                margin: "10px 0",
-                            }}
-                        >
-                            <div
-                                className="flexRow sb"
-                                style={{
-                                    padding: "20px",
-                                    alignItems: "center",
-                                }}
-                            >
-                                <p style={{ fontSize: "12px" }}>
-                                    Order confirmation email will be sent to{" "}
-                                    <strong>{auth.user.email}</strong>
-                                </p>
-                                <MaterialButton
-                                    title="CONTINUE"
-                                    onClick={userOrderConfirmation}
-                                    style={{
-                                        width: "200px",
-                                    }}
-                                />
-                            </div>
-                        </Card>
-                    )} */}
+
+          {orderSummary && (
+            <Card
+              style={{
+                margin: "10px 0",
+              }}
+            >
+              <div
+                className="flexRow sb"
+                style={{
+                  padding: "20px",
+                  alignItems: "center",
+                }}
+              >
+                <p style={{ fontSize: "12px" }}>
+                  Order confirmation email will be sent to{" "}
+                  <strong>{auth.user.email}</strong>
+                </p>
+                <MaterialButton
+                  title="CONTINUE"
+                  //onClick={userOrderConfirmation}
+                  style={{
+                    width: "200px",
+                  }}
+                />
+              </div>
+            </Card>
+          )}
 
           <CheckoutStep
             stepNumber={"4"}
