@@ -103,9 +103,9 @@ const CheckoutPage = (props) => {
   const [confirmAddress, setConfirmAddress] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [orderSummary, setOrderSummary] = useState(false);
-  //const [orderConfirmation, setOrderConfirmation] = useState(false);
-  //const [paymentOption, setPaymentOption] = useState(false);
-  //const [confirmOrder, setConfirmOrder] = useState(false);
+  const [orderConfirmation, setOrderConfirmation] = useState(false);
+  const [paymentOption, setPaymentOption] = useState(false);
+  const [confirmOrder, setConfirmOrder] = useState(false);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -139,12 +139,12 @@ const CheckoutPage = (props) => {
     setAddress(updatedAddress);
   };
 
-  /* const userOrderConfirmation = () => {
+  const userOrderConfirmation = () => {
     setOrderConfirmation(true);
     setOrderSummary(false);
     setPaymentOption(true);
   };
- 
+
   const onConfirmOrder = () => {
     const totalAmount = Object.keys(cart.cartItems).reduce(
       (totalPrice, key) => {
@@ -165,11 +165,11 @@ const CheckoutPage = (props) => {
       paymentStatus: "pending",
       paymentType: "cod",
     };
- 
+
     console.log(payload);
-    dispatch(addOrder(payload));
+    //dispatch(addOrder(payload));
     setConfirmOrder(true);
-  }; */
+  };
 
   useEffect(() => {
     auth.authenticate && dispatch(getAddress());
@@ -222,7 +222,7 @@ const CheckoutPage = (props) => {
               <>
                 {
                   confirmAddress ? (
-                    <div>{`${selectedAddress.address} - ${selectedAddress.pinCode}`}</div>
+                    <div className="stepCompleted">{`${selectedAddress.name}  ${selectedAddress.address} - ${selectedAddress.pinCode}`}</div>
                   ) : (
                     address.map((adr) => (
                       <Address
@@ -234,19 +234,6 @@ const CheckoutPage = (props) => {
                       />
                     ))
                   )}
-                {/* {confirmAddress ? (
-                  <div className="stepCompleted">{`${selectedAddress.name} ${selectedAddress.address} - ${selectedAddress.pinCode}`}</div>
-                ) : (
-                  address.map((adr) => (
-                    <Address
-                      selectAddress={selectAddress}
-                      enableAddressEditForm={enableAddressEditForm}
-                      confirmDeliveryAddress={confirmDeliveryAddress}
-                      onAddressSubmit={onAddressSubmit}
-                      adr={adr}
-                    />
-                  ))
-                )} */}
               </>
             }
           />
@@ -268,20 +255,15 @@ const CheckoutPage = (props) => {
             title={"ORDER SUMMARY"}
             active={orderSummary}
             body={
-              orderSummary ? <CartPage onlyCartItems={true} /> : null
-            }
-
-          /* body={
               orderSummary ? (
-                  <CartPage onlyCartItems={true} />
+                <CartPage onlyCartItems={true} />
               ) : orderConfirmation ? (
-                  <div className="stepCompleted">
-                      {Object.keys(cart.cartItems).length} items
-                  </div>
+                <div className="stepCompleted">
+                  {Object.keys(cart.cartItems).length} items
+                </div>
               ) : null
-          } */
+            }
           />
-
 
           {orderSummary && (
             <Card
@@ -302,7 +284,7 @@ const CheckoutPage = (props) => {
                 </p>
                 <MaterialButton
                   title="CONTINUE"
-                  //onClick={userOrderConfirmation}
+                  onClick={userOrderConfirmation}
                   style={{
                     width: "200px",
                   }}
@@ -314,31 +296,31 @@ const CheckoutPage = (props) => {
           <CheckoutStep
             stepNumber={"4"}
             title={"PAYMENT OPTIONS"}
-          /* active={paymentOption}
-          body={
+            active={paymentOption}
+            body={
               paymentOption && (
-                  <div>
-                      <div
-                          className="flexRow"
-                          style={{
-                              alignItems: "center",
-                              padding: "20px",
-                          }}
-                      >
-                          <input type="radio" name="paymentOption" value="cod" />
-                          <div>Cash on delivery</div>
-                      </div>
-                      <MaterialButton
-                          title="CONFIRM ORDER"
-                          onClick={onConfirmOrder}
-                          style={{
-                              width: "200px",
-                              margin: "0 0 20px 20px",
-                          }}
-                      />
+                <div>
+                  <div
+                    className="flexRow"
+                    style={{
+                      alignItems: "center",
+                      padding: "20px",
+                    }}
+                  >
+                    <input type="radio" name="paymentOption" value="cod" />
+                    <div>Cash on delivery</div>
                   </div>
+                  <MaterialButton
+                    title="CONFIRM ORDER"
+                    onClick={onConfirmOrder}
+                    style={{
+                      width: "200px",
+                      margin: "0 0 20px 20px",
+                    }}
+                  />
+                </div>
               )
-          } */
+            }
           />
         </div>
 
