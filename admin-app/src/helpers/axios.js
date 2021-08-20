@@ -15,7 +15,7 @@ const axiosIntance = axios.create({
 
 /* JWT expires to go signin page */
 
-/* axiosIntance.interceptors.request.use((req) => {
+axiosIntance.interceptors.request.use((req) => {
     const { auth } = store.getState();
     if(auth.token) {
         req.headers.Authorization = `Bearer ${auth.token}`
@@ -33,7 +33,7 @@ axiosIntance.interceptors.response.use((res) => {
         store.dispatch({ type: authConstants.LOGOUT_SUCCESS });
     }
     return Promise.reject(error);
-}) */
+})
 
 
 export default axiosIntance;

@@ -145,7 +145,7 @@ const Anchor = (props) => {
   );
 };
 
-/* const Breed = (props) => {
+const Breed = (props) => {
   return (
     <div className="breed">
       <ul>
@@ -159,6 +159,6 @@ const Anchor = (props) => {
       </ul>
     </div>
   );
-}; */
+};
 
-export { Modal, MaterialInput, MaterialButton, DropdownMenu, Anchor/* , Breed  */};
+export { Modal, MaterialInput, MaterialButton, DropdownMenu, Anchor, Breed };

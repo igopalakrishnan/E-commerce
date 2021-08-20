@@ -51,22 +51,21 @@ const ProductPage = (props) => {
                 justifyContent: 'center'
             }}>
                 {
-                    page.products && page.products.map((product, index) => 
+                    page.products && page.products.map((product, index) =>
                         <Card
-                         key={index}
-                         style={{
-                             width: '400px',
-                             height: '200px',
-                             margin: '5px'
-                         }}
-                         >
+                            key={index}
+                            style={{
+                                width: '400px',
+                                height: '200px',
+                                margin: '5px'
+                            }}
+                        >
                             <img style={{
                                 width: '50%',
                                 height: '100%'
                             }}
-                            src={product.img} alt='' />
-                            </Card
-                            >
+                                src={product.img} alt='' />
+                        </Card>
 
                     )
                 }
