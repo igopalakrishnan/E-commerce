@@ -186,6 +186,16 @@ const CheckoutPage = (props) => {
     //user.address.length === 0 && setNewAddress(true);
   }, [user.address]);
 
+  if(confirmOrder) {
+    return (
+      <Layout>
+        <Card>
+          <div>Thank You</div>
+        </Card>
+      </Layout>
+    )
+  }
+
   /* useEffect(() => {
     if (confirmOrder && user.placedOrderId) {
       props.history.push(`/order_details/${user.placedOrderId}`);

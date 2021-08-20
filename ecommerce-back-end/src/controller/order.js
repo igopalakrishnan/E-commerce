@@ -21,10 +21,10 @@ exports.getOrders = (req, res) => {
     Order.find({ user: req.user._id })
         .select('_id paymentStatus items')
         .populate('items.productId', '_id name productPictures')
-        .exec((error, order) => {
+        .exec((error, orders) => {
             if (error) return res.status(400).json({ error })
-            if (order) {
-                res.status(200).json({ order })
+            if (orders) {
+                res.status(200).json({ orders })
             }
         })
 }
