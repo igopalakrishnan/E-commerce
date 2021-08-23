@@ -49,7 +49,7 @@ exports.getOrders = (req, res) => {
     });
 };
 
-/* exports.getOrder = (req, res) => {
+exports.getOrder = (req, res) => {
   Order.findOne({ _id: req.body.orderId })
     .populate("items.productId", "_id name productPictures")
     .lean()
@@ -69,4 +69,4 @@ exports.getOrders = (req, res) => {
         });
       }
     });
-}; */
+};

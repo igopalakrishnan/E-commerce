@@ -1,7 +1,7 @@
 import axios from "axios";
 import { api } from "../urlConfig";
 import store from "../store";
-//import { authConstants } from "../actions/constants";
+import { authConstants } from "../actions/constants";
 
 const token = window.localStorage.getItem("token");
 
@@ -20,7 +20,7 @@ axiosIntance.interceptors.request.use((req) => {
   return req;
 });
 
-/* axiosIntance.interceptors.response.use(
+axiosIntance.interceptors.response.use(
   (res) => {
     return res;
   },
@@ -33,6 +33,6 @@ axiosIntance.interceptors.request.use((req) => {
     }
     return Promise.reject(error);
   }
-); */
+);
 
 export default axiosIntance;
