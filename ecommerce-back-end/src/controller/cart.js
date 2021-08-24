@@ -111,7 +111,7 @@ exports.getCartItems = (req, res) => {
 };
 
 // new update remove cart items
-exports.removeCartItems = (req, res) => {
+/* exports.removeCartItems = (req, res) => {
   const { productId } = req.body.payload;
   if (productId) {
     Cart.updateOne(
@@ -130,4 +130,4 @@ exports.removeCartItems = (req, res) => {
       }
     });
   }
-};
+}; */
