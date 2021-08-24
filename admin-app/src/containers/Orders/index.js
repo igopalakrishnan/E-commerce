@@ -59,6 +59,22 @@ const Orders = (props) => {
               ))}
             </div>
             <div>
+              <div className="title">Price</div>
+              {orderItem.items.map((item, index) => (
+                <div className="value" key={index}>
+                  {item.payablePrice}
+                </div>
+              ))}
+            </div>
+            <div>
+              <div className="title">Qty</div>
+              {orderItem.items.map((item, index) => (
+                <div className="value" key={index}>
+                  {item.purchasedQty}
+                </div>
+              ))}
+            </div>
+            <div>
               <span className="title">Total Price</span>
               <br />
               <span className="value">{orderItem.totalAmount}</span>
