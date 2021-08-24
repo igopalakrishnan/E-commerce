@@ -1,37 +1,35 @@
 import axios from "../helpers/axios";
 import { orderConstants } from "./constants";
 
-
 export const getCustomerOrders = () => {
-    return async dispatch => {
+    return async (dispatch) => {
         dispatch({ type: orderConstants.GET_CUSTOMER_ORDER_REQUEST });
         try {
-            const res = await axios.post('/order/getCustomerOrders');
+            const res = await axios.post("/order/getCustomerOrders");
             if (res.status === 200) {
                 const { orders } = res.data;
                 dispatch({
                     type: orderConstants.GET_CUSTOMER_ORDER_SUCCESS,
-                    payload: { orders }
+                    payload: { orders },
                 });
             } else {
                 const { error } = res.data;
                 dispatch({
                     type: orderConstants.GET_CUSTOMER_ORDER_FAILURE,
-                    payload: { error }
+                    payload: { error },
                 });
             }
         } catch (error) {
             console.log(error);
         }
-    }
-}
+    };
+};
 
 export const updateOrder = (payload) => {
-    return async dispatch => {
+    return async (dispatch) => {
         dispatch({ type: orderConstants.UPDATE_CUSTOMER_ORDER_REQUEST });
         try {
-            const res = await axios.post('/order/update', payload);
-            console.log(res);
+            const res = await axios.post("/order/update", payload);
             if (res.status === 201) {
                 dispatch({ type: orderConstants.UPDATE_CUSTOMER_ORDER_SUCCESS });
                 dispatch(getCustomerOrders());
@@ -39,11 +37,11 @@ export const updateOrder = (payload) => {
                 const { error } = res.data;
                 dispatch({
                     type: orderConstants.UPDATE_CUSTOMER_ORDER_FAILURE,
-                    payload: { error }
-                })
+                    payload: { error },
+                });
             }
         } catch (error) {
             console.log(error);
         }
-    }
-}
+    };
+};
