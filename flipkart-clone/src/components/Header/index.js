@@ -20,6 +20,9 @@ import { login, signout } from '../../actions';
 const Header = (props) => {
 
   const [loginModal, setLoginModal] = useState(false);
+  const [signup, setSignup] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const auth = useSelector(state => state.auth);
@@ -45,8 +48,12 @@ const Header = (props) => {
     return (
       <DropdownMenu
         menu={
-          <a className='firstName'>
-            {auth.user.firstName}
+          <a className='loginButton'
+            onClick={() => {
+              setSignup(false)
+              setLoginModal(true)
+            }}>
+            Login
           </a>
         }
         menus={[
@@ -91,7 +98,12 @@ const Header = (props) => {
         firstMenu={
           <div className="firstmenu">
             <span>New Customer?</span>
-            <a style={{ color: '#2874f0' }}>Sign Up</a>
+            <a
+              onClick={() => {
+                setLoginModal(true);
+                setSignup(true);
+              }}
+              style={{ color: '#2874f0' }}>Sign Up</a>
           </div>
         }
       />
@@ -112,8 +124,21 @@ const Header = (props) => {
               <p>Get access to your Orders, Wishlist and Recommendations</p>
             </div>
             <div className="rightspace">
-
               <div className='loginInputContainer' >
+                {signup && (
+                  <MaterialButton
+                  type='text'
+                  label='Enter FirstName'
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)} />
+                )}
+                {signup && (
+                  <MaterialButton
+                  type='text'
+                  label='Enter LastName'
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)} />
+                )}
                 <MaterialInput
                   type="text"
                   label="Enter Email/Enter Mobile Number"

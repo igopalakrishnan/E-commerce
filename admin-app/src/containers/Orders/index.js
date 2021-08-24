@@ -24,13 +24,13 @@ const Orders = (props) => {
     dispatch(updateOrder(payload));
   };
 
-  /* const formatDate = (date) => {
+  const formatDate = (date) => {
     if (date) {
       const d = new Date(date);
       return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
     }
     return "";
-  }; */
+  };
 
   return (
     <Layout sidebar>
@@ -43,36 +43,52 @@ const Orders = (props) => {
             key={index}
             headerLeft={orderItem._id}
           >
-            {/* <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              padding: "50px 50px",
-              alignItems: "center",
-            }}
-          >
-            <div>
-              <div className="title">Items</div>
-              {orderItem.items.map((item, index) => (
-                <div className="value" key={index}>
-                  {item.productId.name}
-                </div>
-              ))}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                padding: "50px 50px",
+                alignItems: "center",
+              }}
+            >
+              <div>
+                <div className="title">Items</div>
+                {orderItem.items.map((item, index) => (
+                  <div className="value" key={index}>
+                    {item.productId.name}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <div className="title">Price</div>
+                {orderItem.items.map((item, index) => (
+                  <div className="value" key={index}>
+                    {item.payablePrice}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <div className="title">Quantity</div>
+                {orderItem.items.map((item, index) => (
+                  <div className="value" key={index}>
+                    {item.purchasedQty}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <span className="title">Total Price</span>
+                <br />
+                <span className="value">{orderItem.totalAmount}</span>
+              </div>
+              <div>
+                <span className="title">Payment Type</span> <br />
+                <span className="value">{orderItem.paymentType}</span>
+              </div>
+              <div>
+                <span className="title">Payment Status</span> <br />
+                <span className="value">{orderItem.paymentStatus}</span>
+              </div>
             </div>
-            <div>
-              <span className="title">Total Price</span>
-              <br />
-              <span className="value">{orderItem.totalAmount}</span>
-            </div>
-            <div>
-              <span className="title">Payment Type</span> <br />
-              <span className="value">{orderItem.paymentType}</span>
-            </div>
-            <div>
-              <span className="title">Payment Status</span> <br />
-              <span className="value">{orderItem.paymentStatus}</span>
-            </div>
-          </div> */}
             <div
               style={{
                 boxSizing: "border-box",
@@ -81,52 +97,23 @@ const Orders = (props) => {
                 alignItems: "center",
               }}
             >
-              <div className='orderTrack'>
-                <div className='orderStatus'>
-                  <div className='point'></div>
-                  <div className='orderInfo'>
-                    <div className='status'>Ordered</div>
-                    <div className='date'>Fri, 2021</div>
-                  </div>
-                </div>
-                <div className='orderStatus'>
-                  <div className='point'></div>
-                  <div className='orderInfo'>
-                    <div className='status'>Packed</div>
-                    <div className='date'>Fri, 2021</div>
-                  </div>
-                </div>
-                <div className='orderStatus'>
-                  <div className='point'></div>
-                  <div className='orderInfo'>
-                    <div className='status'>Shipped</div>
-                    <div className='date'>Fri, 2021</div>
-                  </div>
-                </div>
-                <div className='orderStatus'>
-                  <div className='point'></div>
-                  <div className='orderInfo'>
-                    <div className='status'>Delivered</div>
-                    <div className='date'>Fri, 2021</div>
-                  </div>
-                </div>
-              </div>
-              {/* <div className="orderTrack">
-              {orderItem.orderStatus.map((status) => (
-                <div
-                  className={`orderStatus ${status.isCompleted ? "active" : ""
-                    }`}
-                >
+
+              <div className="orderTrack">
+                {orderItem.orderStatus.map((status) => (
                   <div
-                    className={`point ${status.isCompleted ? "active" : ""}`}
-                  ></div>
-                  <div className="orderInfo">
-                    <div className="status">{status.type}</div>
-                    <div className="date">{formatDate(status.date)}</div>
+                    className={`orderStatus ${status.isCompleted ? "active" : ""
+                      }`}
+                  >
+                    <div
+                      className={`point ${status.isCompleted ? "active" : ""}`}
+                    ></div>
+                    <div className="orderInfo">
+                      <div className="status">{status.type}</div>
+                      <div className="date">{formatDate(status.date)}</div>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div> */}
+                ))}
+              </div>
 
               {/* select input to apply order action */}
               <div

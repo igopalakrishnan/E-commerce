@@ -115,7 +115,7 @@ export const getOrders = () => {
 };
 
 // single order with complete info and delivery location
-/* export const getOrder = (payload) => {
+export const getOrder = (payload) => {
   return async (dispatch) => {
     try {
       const res = await axios.post(`/getOrder`, payload);
@@ -138,4 +138,4 @@ export const getOrders = () => {
       console.log(error);
     }
   };
-}; */
+};
