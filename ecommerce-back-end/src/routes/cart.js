@@ -1,6 +1,7 @@
 const express = require("express");
 const {
   addItemToCart,
+  addToCart,
   getCartItems,
   removeCartItems,
 } = require("../controller/cart");
