@@ -17,15 +17,8 @@ const ProductStore = (props) => {
 
     const dispatch = useDispatch();
     const product = useSelector(state => state.product);
-    //const priceRange = product.priceRange;
-    const [priceRange, setPriceRange] = useState({
-        under5k: 5000,
-        under10k: 10000,
-        under15k: 15000,
-        under20k: 20000,
-        under30k: 30000
-    });
-
+    const priceRange = product.priceRange;
+    
     useEffect(() => {
         console.log(props);
         const { match } = props;

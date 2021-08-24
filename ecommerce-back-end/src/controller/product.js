@@ -100,7 +100,7 @@ exports.getProductDetailsById = (req, res) => {
 };
 
 // new update
-/* exports.deleteProductById = (req, res) => {
+exports.deleteProductById = (req, res) => {
     const { productId } = req.body.payload;
     if (productId) {
         Product.deleteOne({ _id: productId }).exec((error, result) => {
@@ -121,4 +121,4 @@ exports.getProducts = async (req, res) => {
         .exec();
 
     res.status(200).json({ products });
-}; */
+};

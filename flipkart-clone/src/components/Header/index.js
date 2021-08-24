@@ -71,7 +71,7 @@ const Header = (props) => {
   const renderLoggedInMenu = () => {
     return (
       <DropdownMenu
-        menu={<a className="fullName">{auth.user.fullName}</a>}
+        menu={<a className="fullName">{auth.user.firstName}</a>}
         menus={[
           { label: "My Profile", href: "", icon: null },
           { label: "SuperCoin Zone", href: "", icon: null },

@@ -80,7 +80,8 @@ export const addToCart = (product, newQty = 1) => {
   return async (dispatch) => {
     try {
       dispatch({ type: cartConstants.REMOVE_CART_ITEM_REQUEST });
-      const res = await axios.post(`/user/cart/removeItem`, { payload });
+      const res = await axios.post(`/user/cart/removeItem`, payload );
+      console.log(res);
       if (res.status === 202) {
         dispatch({ type: cartConstants.REMOVE_CART_ITEM_SUCCESS });
         dispatch(getCartItems());

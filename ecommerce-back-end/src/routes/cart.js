@@ -21,6 +21,6 @@ router.get("/user/getCartItems", requireSignin, userMiddleware, getCartItems);
   requireSignin,
   userMiddleware,
   removeCartItems
-); */
-
+);
+ */
 module.exports = router;
