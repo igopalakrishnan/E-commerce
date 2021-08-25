@@ -112,10 +112,10 @@ exports.deleteCategories = async (req, res) => {
         const deleteCategory = await Category.findOneAndDelete({ _id: ids[i]._id });
         deletedCategories.push(deleteCategory);
     }
-    if(deletedCategories.length == ids.length) {
+    if (deletedCategories.length == ids.length) {
         res.status(201).json({ message: 'categories removed' })
-    }else {
+    } else {
         res.status(400).json({ message: 'Something went wrong' })
     }
-   
+
 }

@@ -21,7 +21,6 @@ function createCategories(categories, parentId = null) {
             children: createCategories(categories, cate._id),
         });
     }
-
     return categoryList;
 }
 

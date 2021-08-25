@@ -40,6 +40,7 @@ exports.addAddress = (req, res) => {
   }
 };
 
+
 exports.getAddress = (req, res) => {
   UserAddress.findOne({ user: req.user._id }).exec((error, userAddress) => {
     if (error) return res.status(400).json({ error });

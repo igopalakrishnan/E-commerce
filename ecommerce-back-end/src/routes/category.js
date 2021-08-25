@@ -25,5 +25,4 @@ router.get('/category/getcategory', getCategories);
 router.post('/category/update', upload.single('categoryImage'), updateCategories);
 router.post('/category/delete', deleteCategories);
 
-
 module.exports = router;

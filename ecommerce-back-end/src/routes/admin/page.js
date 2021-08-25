@@ -10,4 +10,5 @@ router.post('/page/create', requireSignin, adminMiddleware, upload.fields([
 
 router.get(`/page/:category/:type`, getPage);
 
+
 module.exports = router;

@@ -15,5 +15,4 @@ router.post('/signup',validateSignupRequest, isRequestValidated, signup);
 }) */
 
 
-
 module.exports = router;
