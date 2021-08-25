@@ -30,14 +30,14 @@ mongoose.connect(
         useCreateIndex: true,
         useFindAndModify: false
     }
-    ).then(() => {
-        console.log('mongoDB connected......');
-    })
+).then(() => {
+    console.log('mongoDB connected......');
+})
 
 //add middleware before the request
 app.use(cors());
 app.use(express.json());
-app.use('/public',express.static(path.join(__dirname, 'uploads')));
+app.use('/public', express.static(path.join(__dirname, 'uploads')));
 app.use('/api', authRoutes);
 app.use('/api', adminRoutes);
 app.use('/api', categoryRoutes);
