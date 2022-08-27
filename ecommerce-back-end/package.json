@@ -30,6 +30,10 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
+  },
+  "engines": {
+    "node": "v15.4.0",
+    "npm": "7.0.15"
   }
 }
 
