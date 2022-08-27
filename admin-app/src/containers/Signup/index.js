@@ -49,7 +49,8 @@ const Signup = (props) => {
     }
 
     if (user.loading) {
-        return <p>Loading...!</p>;
+        return <p>Valid Email is required........! Password must be atleast 6 characters.....!
+        </p>
     }
 
     return (
